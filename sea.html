@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>지표 탐험대</title>
+<title>바다 탐험대</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
   :root {
@@ -14,6 +14,8 @@
     --muted: #93A9BF;
     --accent: #53C6EC;
     --korea: #F0B24E;
+    --ero: #F08A6B;
+    --dep: #7BD389;
     --font-display: 'Jua', 'Apple SD Gothic Neo', sans-serif;
     --font-body: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
   }
@@ -25,14 +27,14 @@
     min-height: 100vh;
     padding: 20px clamp(12px, 3vw, 40px) 40px;
   }
-  header { text-align: center; margin-bottom: 18px; }
+  header { text-align: center; margin-bottom: 18px; position: relative; }
   header h1 {
     font-family: var(--font-display);
     font-weight: 400;
     font-size: clamp(28px, 4.5vw, 46px);
     letter-spacing: 1px;
   }
-  header h1 .globe { color: var(--accent); }
+  header h1 .wave { color: var(--accent); }
   header p { color: var(--muted); font-size: clamp(13px, 1.6vw, 17px); margin-top: 4px; }
   .switch {
     display: inline-block;
@@ -94,7 +96,7 @@
     font-weight: 700;
     margin-top: 6px;
   }
-  .caption .place .tag {
+  .tag {
     display: inline-block;
     font-size: 0.72em;
     font-weight: 700;
@@ -105,6 +107,9 @@
   }
   .tag.kr { background: var(--korea); color: #3A2A08; }
   .tag.world { background: var(--accent); color: #06222E; }
+  .tag.ero { background: var(--ero); color: #3D1508; }
+  .tag.dep { background: var(--dep); color: #0C3315; }
+  .tag.video { background: #C89BF0; color: #2A0D42; }
   .caption .fact { color: var(--muted); font-size: clamp(13px, 1.7vw, 16px); margin-top: 8px; }
 
   .carousel {
@@ -142,7 +147,7 @@
     width: 118px;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(16px, 1.8vw, 19px);
+    font-size: clamp(15px, 1.7vw, 18px);
     color: var(--text);
     background: var(--panel);
     border: 2px solid var(--line);
@@ -167,16 +172,16 @@
     font-size: 12.5px;
   }
   @media (prefers-reduced-motion: reduce) {
-    .buttons button, .nav { transition: none; }
-    .buttons button:hover { transform: none; }
+    .track button, .nav, .car-nav { transition: none; }
+    .track button:hover { transform: none; }
   }
 </style>
 </head>
 <body>
 <header>
-  <h1><span class="globe">🌏</span> 지표 탐험대</h1>
-  <p>버튼을 눌러 지구 표면의 여러 모습을 살펴보아요</p>
-  <a class="switch" href="sea.html">🌊 바다 탐험대로 가기</a>
+  <h1><span class="wave">🌊</span> 바다 탐험대</h1>
+  <p>파도가 깎고, 쌓아서 만든 바닷가 지형을 살펴보아요</p>
+  <a class="switch" href="index.html">🌏 지표 탐험대로 가기</a>
 </header>
 
 <div class="viewer">
@@ -198,64 +203,43 @@
   <button class="car-nav" id="carNext" aria-label="버튼 목록 오른쪽으로">▶</button>
 </div>
 
-<footer>사진 출처: 위키미디어 공용(Wikimedia Commons), 자유 이용 저작물 · 초등 3학년 과학 '지구의 모습' 수업 자료</footer>
+<footer>사진 출처: 위키미디어 공용(Wikimedia Commons), 자유 이용 저작물 · 초등 3학년 과학 '바닷가 지형' 수업 자료 · 참고 영상: 국가지질공원 '바다가 만든 지형과 지질'</footer>
 
 <script>
 const ITEMS = [
-  { name: "바다", emoji: "🌊", file: "sea.jpg", kr: true,
-    place: "협재해수욕장과 비양도 · 제주특별자치도 제주시 한림읍",
-    fact: "에메랄드빛 바닷물 너머로 작은 화산섬인 비양도가 보여요." },
-  { name: "산호초 바다", emoji: "🐠", file: "reef.jpg", kr: false,
-    place: "그레이트배리어리프(대보초) · 오스트레일리아",
-    fact: "세계에서 가장 큰 산호초 바다예요. 너무 커서 우주에서도 보인답니다!" },
-  { name: "산", emoji: "⛰️", file: "mountain.jpg", kr: true,
-    place: "설악산 울산바위 · 강원특별자치도 속초시",
-    fact: "커다란 바위 봉우리가 하늘을 향해 우뚝 솟아 있어요. 왜 이런 모양이 되었을까요?" },
-  { name: "들", emoji: "🌾", file: "field.jpg", kr: true,
-    place: "대관령 양떼목장 · 강원특별자치도 평창군",
-    fact: "산 위의 넓고 평평한 풀밭이에요. 양들이 풀을 뜯으며 살아요." },
-  { name: "강", emoji: "🏞️", file: "river.jpg", kr: true,
-    place: "한반도 지형(서강) · 강원특별자치도 영월군",
-    fact: "강물이 굽이쳐 흐르면서 우리나라 지도를 꼭 닮은 땅 모양을 만들었어요!" },
-  { name: "호수", emoji: "💧", file: "lake.jpg", kr: true,
-    place: "백두산 천지 · 한반도에서 가장 높은 산꼭대기",
-    fact: "화산이 폭발한 뒤 움푹 파인 곳에 물이 고여 만들어진 호수예요." },
-  { name: "갯벌", emoji: "🦀", file: "mudflat.jpg", kr: true,
+  { name: "해식동굴", emoji: "🕳️", file: "coast-benagil.jpg", kr: false, group: "ero", video: false,
+    place: "벤아길 해식동굴 · 포르투갈 알가르브",
+    fact: "파도가 절벽 아래를 오랫동안 파내서 만든 동굴이에요. 천장에 뚫린 구멍으로 햇빛이 들어와요. 우리나라 마라도에도 해식동굴이 있어요!" },
+  { name: "해식아치", emoji: "🐘", file: "coast-elephant.jpg", kr: true, group: "ero", video: true,
+    place: "황금산 코끼리바위 · 충청남도 서산시",
+    fact: "파도가 바위에 구멍을 뚫어 코끼리가 물을 마시는 모양이 되었어요. 수업 영상에 나온 바로 그곳!" },
+  { name: "해식아치", emoji: "🌉", file: "coast-durdle.jpg", kr: false, group: "ero", video: false,
+    place: "더들 도어 · 영국 도싯 해안",
+    fact: "바위에 뚫린 커다란 돌문이에요. 파도가 약한 부분부터 뚫어서 만들었어요." },
+  { name: "해식기둥", emoji: "🗿", file: "coast-dumujin.jpg", kr: true, group: "ero", video: true,
+    place: "백령도 두무진 · 인천광역시 옹진군",
+    fact: "해안을 따라 4km나 병풍처럼 서 있는 돌기둥들이에요. 수업 영상에 나온 바로 그곳!" },
+  { name: "해식기둥", emoji: "🪨", file: "coast-oedolgae.jpg", kr: true, group: "ero", video: false,
+    place: "외돌개 · 제주특별자치도 서귀포시",
+    fact: "바다 위에 홀로 우뚝 선 돌기둥이에요. '외롭게 홀로 서 있는 돌'이라서 외돌개라고 불러요." },
+  { name: "해식기둥", emoji: "🏝️", file: "coast-apostles.jpg", kr: false, group: "ero", video: false,
+    place: "12사도 바위 · 오스트레일리아 빅토리아",
+    fact: "절벽이 파도에 깎이고 남은 부분이 기둥이 되었어요. 지금도 조금씩 깎여서 하나씩 무너지고 있대요." },
+  { name: "해식절벽", emoji: "📚", file: "coast-chaeseok.jpg", kr: true, group: "ero", video: false,
+    place: "채석강 · 전북특별자치도 부안군 (국가지질공원)",
+    fact: "수만 권의 책을 쌓아 놓은 것 같은 절벽이에요. 파도가 깎아서 속의 줄무늬 지층이 드러났어요." },
+  { name: "해식절벽", emoji: "🤍", file: "coast-dover.jpg", kr: false, group: "ero", video: false,
+    place: "도버 백악 절벽 · 영국",
+    fact: "아주 작은 바다 생물 껍데기가 쌓여 만들어진 하얀 절벽을 파도가 깎았어요. 바다가 만들고, 바다가 깎은 절벽!" },
+  { name: "모래사장", emoji: "🏖️", file: "sea.jpg", kr: true, group: "dep", video: false,
+    place: "협재해수욕장 · 제주특별자치도 제주시 한림읍",
+    fact: "파도가 모래를 실어 와 오랫동안 쌓아서 만든 바닷가예요." },
+  { name: "해안사구", emoji: "⏳", file: "coast-sinduri.jpg", kr: true, group: "dep", video: false,
+    place: "신두리 해안사구 · 충청남도 태안군",
+    fact: "바닷바람이 모래사장의 모래를 날려 쌓은 우리나라에서 가장 큰 모래 언덕이에요." },
+  { name: "갯벌", emoji: "🦀", file: "mudflat.jpg", kr: true, group: "dep", video: false,
     place: "고창 갯벌 · 전북특별자치도 고창군 (유네스코 세계유산)",
-    fact: "바닷물이 빠지면 드러나는 부드러운 진흙 땅이에요. 조개와 게가 살아요." },
-  { name: "갈대 습지", emoji: "🐦", file: "reed.jpg", kr: true,
-    place: "순천만 습지 · 전라남도 순천시",
-    fact: "물기가 많은 땅에 갈대가 가득해요. 겨울마다 철새들이 찾아와요." },
-  { name: "화산", emoji: "🌋", file: "volcano.jpg", kr: true,
-    place: "성산일출봉 · 제주특별자치도 서귀포시 (유네스코 세계자연유산)",
-    fact: "바닷속에서 화산이 폭발해 만들어졌어요. 가운데가 그릇처럼 움푹 파여 있지요?" },
-  { name: "활화산", emoji: "🔥", file: "lava.jpg", kr: false,
-    place: "킬라우에아 화산 · 미국 하와이",
-    fact: "지금도 뜨거운 용암이 솟아오르는 살아 있는 화산이에요. 용암이 식으면 새 땅이 됩니다." },
-  { name: "주상절리", emoji: "🪨", file: "columnar.jpg", kr: true,
-    place: "대포 주상절리대 · 제주특별자치도 서귀포시 중문",
-    fact: "뜨거운 용암이 바닷물에 식으면서 돌기둥이 차곡차곡 만들어졌어요." },
-  { name: "폭포", emoji: "💦", file: "waterfall.jpg", kr: true,
-    place: "정방폭포 · 제주특별자치도 서귀포시",
-    fact: "우리나라에서 보기 드물게 바다로 바로 떨어지는 폭포예요." },
-  { name: "사막", emoji: "🐪", file: "desert.jpg", kr: false,
-    place: "나미브 사막 '듄 45' · 아프리카 나미비아",
-    fact: "비가 거의 오지 않아 모래로 뒤덮인 땅이에요. 모래 언덕 색이 붉어요." },
-  { name: "빙하", emoji: "🧊", file: "glacier.jpg", kr: false,
-    place: "페리토 모레노 빙하 · 남아메리카 아르헨티나",
-    fact: "눈이 오랫동안 쌓이고 눌려서 만들어진 거대한 얼음 덩어리예요." },
-  { name: "빙산 호수", emoji: "❄️", file: "iceberg.jpg", kr: false,
-    place: "요쿨살론 빙하 호수 · 아이슬란드",
-    fact: "빙하 끝에서 떨어져 나온 파란 얼음산이 호수 위에 둥둥 떠 있어요." },
-  { name: "협곡", emoji: "🏜️", file: "canyon.jpg", kr: false,
-    place: "그랜드캐니언 · 미국 애리조나주",
-    fact: "강물이 아주 오랜 시간 땅을 깎아서 만든 깊은 골짜기예요." },
-  { name: "소금사막", emoji: "🧂", file: "saltflat.jpg", kr: false,
-    place: "우유니 소금사막 · 남아메리카 볼리비아",
-    fact: "옛날에 바다였던 곳의 물이 마르고 소금만 남았어요. 비가 오면 거울처럼 변해요!" },
-  { name: "온천", emoji: "♨️", file: "hotspring.jpg", kr: false,
-    place: "그랜드 프리즈매틱 온천 · 미국 옐로스톤 국립공원",
-    fact: "땅속 뜨거운 물이 솟아나는 곳이에요. 무지개처럼 알록달록한 색을 띠어요." },
+    fact: "바닷물이 고운 흙을 실어 와 쌓은 부드러운 진흙 땅이에요. 물이 빠지면 드러나요." },
 ];
 
 let current = 0;
@@ -278,8 +262,10 @@ function show(i) {
   photo.src = "images/" + item.file;
   photo.alt = `${item.name} - ${item.place}`;
   capName.innerHTML = `<span class="emoji">${item.emoji}</span>${item.name}`;
-  const tag = item.kr ? '<span class="tag kr">우리나라</span>' : '<span class="tag world">세계</span>';
-  capPlace.innerHTML = item.place + tag;
+  let tags = item.kr ? '<span class="tag kr">우리나라</span>' : '<span class="tag world">세계</span>';
+  tags += item.group === "ero" ? '<span class="tag ero">바다가 깎았어요</span>' : '<span class="tag dep">바다가 쌓았어요</span>';
+  if (item.video) tags += '<span class="tag video">★ 수업 영상 속 장소</span>';
+  capPlace.innerHTML = item.place + tags;
   capFact.textContent = item.fact;
   buttonsEl.querySelectorAll("button").forEach((b, j) => {
     b.classList.toggle("active", j === current);
@@ -289,17 +275,16 @@ function show(i) {
   });
 }
 
-document.getElementById("carPrev").addEventListener("click", () =>
-  buttonsEl.scrollLeft -= buttonsEl.clientWidth * 0.8);
-document.getElementById("carNext").addEventListener("click", () =>
-  buttonsEl.scrollLeft += buttonsEl.clientWidth * 0.8);
-
 document.getElementById("prevBtn").addEventListener("click", () => show(current - 1));
 document.getElementById("nextBtn").addEventListener("click", () => show(current + 1));
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") show(current - 1);
   if (e.key === "ArrowRight") show(current + 1);
 });
+document.getElementById("carPrev").addEventListener("click", () =>
+  buttonsEl.scrollLeft -= buttonsEl.clientWidth * 0.8);
+document.getElementById("carNext").addEventListener("click", () =>
+  buttonsEl.scrollLeft += buttonsEl.clientWidth * 0.8);
 
 show(0);
 </script>

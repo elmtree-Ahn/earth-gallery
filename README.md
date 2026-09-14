@@ -1,7 +1,8 @@
-# 지표 탐험대
+# 지표 탐험대 · 바다 탐험대
 
-초등 3학년 과학 '지구의 모습' 수업용 사진 갤러리 웹앱.
-버튼(카루셀)을 누르면 우리나라와 세계의 지형 18곳 실제 사진이 표시됩니다.
+초등 3학년 과학 수업용 사진 갤러리 웹앱 두 개.
+- `index.html` **지표 탐험대** — '지구의 모습' 지형 18곳
+- `sea.html` **바다 탐험대** — '바다가 만든 지형과 지질' 11곳 (침식/퇴적 구분, 국가지질공원 영상 속 장소 포함)
 
 ## 사진 출처 (Wikimedia Commons, 자유 이용 저작물)
 
@@ -25,5 +26,14 @@
 | lava.jpg | [File:Pahoeoe fountain edit2.jpg](https://commons.wikimedia.org/wiki/File:Pahoeoe_fountain_edit2.jpg) |
 | reef.jpg | [File:Aerial View of Great Barrier Reef (Ank Kumar) 02.jpg](https://commons.wikimedia.org/wiki/File:Aerial_View_of_Great_Barrier_Reef_(Ank_Kumar)_02.jpg) |
 | iceberg.jpg | [File:033 Freshly rotated iceberg at Jökulsárlón (Iceland) Photo by Giles Laurent.jpg](https://commons.wikimedia.org/wiki/File:033_Freshly_rotated_iceberg_at_Jökulsárlón_(Iceland)_Photo_by_Giles_Laurent.jpg) |
+| coast-benagil.jpg | [File:02-05-2017 Algar de Benagil (4).JPG](https://commons.wikimedia.org/wiki/File:02-05-2017_Algar_de_Benagil_(4).JPG) |
+| coast-elephant.jpg | [File:제7경 황금산 코끼리바위.jpg](https://commons.wikimedia.org/wiki/File:제7경_황금산_코끼리바위.jpg) |
+| coast-durdle.jpg | [File:Durdle Door Dorset Sunset.jpg](https://commons.wikimedia.org/wiki/File:Durdle_Door_Dorset_Sunset.jpg) |
+| coast-dumujin.jpg | [File:KOCIS Korea Island Baengnyeongdo01 (9265013277).jpg](https://commons.wikimedia.org/wiki/File:KOCIS_Korea_Island_Baengnyeongdo01_(9265013277).jpg) |
+| coast-oedolgae.jpg | [File:외돌개.jpg](https://commons.wikimedia.org/wiki/File:외돌개.jpg) |
+| coast-apostles.jpg | [File:Princetown (AU), Port Campbell National Park, Twelve Apostles -- 2019 -- 0969.jpg](https://commons.wikimedia.org/wiki/File:Princetown_(AU),_Port_Campbell_National_Park,_Twelve_Apostles_--_2019_--_0969.jpg) |
+| coast-chaeseok.jpg | [File:Korea-Buan County-Chaeseokgang-01.jpg](https://commons.wikimedia.org/wiki/File:Korea-Buan_County-Chaeseokgang-01.jpg) |
+| coast-dover.jpg | [File:Dover White Cliffs 1.jpg](https://commons.wikimedia.org/wiki/File:Dover_White_Cliffs_1.jpg) |
+| coast-sinduri.jpg | [File:Sindu sandhills image 3.jpg](https://commons.wikimedia.org/wiki/File:Sindu_sandhills_image_3.jpg) |
 
 각 사진의 저작자·라이선스는 위 원본 페이지에 표기되어 있습니다.
